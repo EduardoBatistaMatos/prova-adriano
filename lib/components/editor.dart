@@ -1,27 +1,25 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 class Editor extends StatelessWidget {
-  final TextEditingController? controlador;
-  final String? rotulo;
-  final String? dica;
-  final IconData? icone;
+  final String label;
+  final TextEditingController controller;
 
-  Editor({this.controlador, this.rotulo, this.dica, this.icone});
+  const Editor({
+    super.key,
+    required this.label,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.only(bottom: 12),
       child: TextField(
-        controller: controlador,
-        style: TextStyle(fontSize: 25),
+        controller: controller,
         decoration: InputDecoration(
-          icon: icone != null ? Icon(icone) : null,
-
-          labelText: rotulo,
-          hintText: dica,
+          labelText: label,
+          border: const OutlineInputBorder(),
         ),
-        keyboardType: TextInputType.number,
       ),
     );
   }
